@@ -20,6 +20,15 @@
   <button type="submit">Search</button>
 </form>
 
+<h3>Search by ZIP code</h3>
+<form id="zip-form">
+  <label>ZIP <input name="zip" type="text" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="60601" required></label>
+  <label>Radius (mi) <input name="r" type="number" value="10" min="1" max="50"></label>
+  <label>Results <input name="s" type="number" value="10" min="1" max="50"></label>
+  <button type="submit">Search</button>
+</form>
+
+
 
 <p id="status"></p>
 <section id="results"></section>

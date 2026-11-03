@@ -19,3 +19,12 @@ def search_by_address(address, radius=10, page_size=10, page=1):
         "p": str(page),
         "requestType": "locator",
     })
+
+def search_by_zip(zip_code, radius=10, page_size=10, page=1):
+    return client.post("/api/stores/search/v2", {
+        "zip": str(zip_code),
+        "r": str(radius),
+        "s": str(page_size),
+        "p": str(page),
+        "requestType": "locator",
+    })

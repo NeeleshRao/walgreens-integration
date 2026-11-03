@@ -2,6 +2,7 @@ const geoForm = document.getElementById("geo-form");
 const addressForm = document.getElementById("address-form");
 const statusEl = document.getElementById("status");
 const resultsEl = document.getElementById("results");
+const zipForm = document.getElementById("zip-form");
 
 document.getElementById("use-location").addEventListener("click", () => {
   if (!navigator.geolocation) {
@@ -46,6 +47,12 @@ async function runSearch(url, formData) {
     statusEl.textContent = `Request failed: ${err.message}`;
   }
 }
+
+zipForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  runSearch("/storelocator/api/search/zip/", new FormData(zipForm));
+});
+
 
 function renderResults(results) {
   statusEl.textContent = results.length ? `${results.length} store(s) found` : "No stores found";

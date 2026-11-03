@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 
 from walgreens.client import WalgreensAPIError
 from . import services
+import re
 
 
 class IndexView(TemplateView):
@@ -53,3 +54,30 @@ def search_address(request):
         return JsonResponse({"error": str(exc), "details": exc.payload}, status=exc.status)
 
     return JsonResponse(result)
+
+@require_GET
+def search_zip(request):
+    zip_code = request.GET.get("zip", "").strip()
+    if not re.fullmatch(r"\d{5}", zip_code):
+        return JsonResponse({"error": "zip must be a 5-digit ZIP code"}, status=400)
+
+    try:
+        radius, page_size, page = _paging(request)
+    except ValueError:
+        return JsonResponse({"error": "r, s and p must be integers"}, status=400)
+
+    try:
+        result = services.search_by_zip(zip_code, radius, page_size, page)
+    except WalgreensAPIError as exc:
+        return JsonResponse({"error": str(exc), "details": exc.payload}, status=exc.status)
+
+    return JsonResponse(result)
+
+
+def _paging(request):
+    """Parse radius/page size/page from the query string. Raises ValueError if not integers."""
+    return (
+        int(request.GET.get("r", 10)),
+        int(request.GET.get("s", 10)),
+        int(request.GET.get("p", 1)),
+    )
