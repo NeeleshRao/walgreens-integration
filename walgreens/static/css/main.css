@@ -1,0 +1,13 @@
+body { font-family: system-ui, sans-serif; margin: 0; background: #f6f7f9; color: #222; }
+header { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: #e31837; color: #fff; }
+header h1 { font-size: 1.2rem; margin: 0; }
+header nav a { color: #fff; }
+.badge { background: #fff; color: #e31837; padding: .1rem .5rem; border-radius: 4px; font-size: .75rem; font-weight: 600; }
+main { max-width: 900px; margin: 1.5rem auto; padding: 0 1rem; }
+form { display: flex; flex-wrap: wrap; gap: .75rem; align-items: end; }
+label { display: flex; flex-direction: column; font-size: .85rem; gap: .2rem; }
+input { padding: .4rem; }
+button { padding: .5rem .9rem; cursor: pointer; }
+#results { display: grid; gap: .75rem; margin-top: 1rem; }
+.card { background: #fff; border-radius: 8px; padding: .75rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+pre { background: #1e1e1e; color: #ddd; padding: .75rem; overflow: auto; border-radius: 6px; }

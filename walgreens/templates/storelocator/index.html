@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h3>Search by geolocation</h3>
+<form id="geo-form">
+  <label>Latitude <input name="lat" type="number" step="any" required></label>
+  <label>Longitude <input name="lng" type="number" step="any" required></label>
+  <label>Radius (mi) <input name="r" type="number" value="10" min="1" max="50"></label>
+  <label>Results <input name="s" type="number" value="10" min="1" max="50"></label>
+  <button type="button" id="use-location">Use my location</button>
+  <button type="submit">Search</button>
+</form>
+
+<h3>Search by address</h3>
+<form id="address-form">
+  <label>Address <input name="address" type="text" placeholder="1 N State St, Chicago, IL" size="40" required></label>
+  <label>Radius (mi) <input name="r" type="number" value="10" min="1" max="50"></label>
+  <label>Results <input name="s" type="number" value="10" min="1" max="50"></label>
+  <button type="submit">Search</button>
+</form>
+
+
+<p id="status"></p>
+<section id="results"></section>
+{% comment %} 
+<details id="inspector" hidden>
+  <summary>Request / Response inspector</summary>
+  <pre id="inspector-meta"></pre>
+  <pre id="inspector-json"></pre>
+</details> {% endcomment %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/storelocator.js' %}"></script>
+{% endblock %}
