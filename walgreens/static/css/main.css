@@ -149,6 +149,9 @@ form label.wide { flex: 1 1 100%; }
 
 form .selection { flex: 1 1 100%; margin: 0; }
 
+form .break { flex-basis: 100%; height: 0; }
+
+
 pre.debug { max-height: 22rem; font-size: .8rem; margin-top: .75rem; }
 .card .muted { color: #777; font-size: .85rem; }
 .slots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .35rem 0 .75rem; }
@@ -157,4 +160,15 @@ pre.debug { max-height: 22rem; font-size: .8rem; margin-top: .75rem; }
 .warn { color: #9a5b00; }
 .restrict { color: #b00020; }
 .consent { background: #fff; padding: .75rem 1rem; border-radius: 8px; font-size: .85rem; color: #444; flex: 1 1 100%; }
+
+
+/* Vaccine picker: aligned columns instead of a ragged flow */
+.filters fieldset.vaccine-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .5rem 1.25rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .filters fieldset.vaccine-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .filters fieldset.vaccine-grid { grid-template-columns: 1fr; } }
 

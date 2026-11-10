@@ -6,12 +6,13 @@
 
 <details class="filters" open>
   <summary>Vaccines (max 4)</summary>
-  <fieldset>
+  <fieldset class="vaccine-grid">
     {% for code, name in vaccines.items %}
       <label class="check"><input type="checkbox" name="vaccine" value="{{ code }}" form=""> {{ name }} ({{ code }})</label>
     {% endfor %}
   </fieldset>
 </details>
+
 
 <form id="timeslots-form">
   <label>State <input name="state" type="text" maxlength="2" placeholder="IL" required></label>
@@ -19,6 +20,7 @@
   <label>Date of birth <input name="dob" type="date" required></label>
   <label>From <input name="startDateTime" type="date" required></label>
   <label>To (optional) <input name="endDateTime" type="date"></label>
+  <div class="break"></div>
   <label>Latitude <input name="latitude" type="number" step="any" required></label>
   <label>Longitude <input name="longitude" type="number" step="any" required></label>
   <button type="button" id="use-location">Use my location</button>
