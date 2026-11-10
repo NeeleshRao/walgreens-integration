@@ -2,6 +2,21 @@
 {% load static %}
 
 {% block content %}
+
+<details id="filters" class="filters">
+  <summary>Filter stores <span id="filter-count"></span></summary>
+  {% for title, options in filter_groups %}
+    <fieldset>
+      <legend>{{ title }}</legend>
+      {% for value, label in options.items %}
+        <label class="check"><input type="checkbox" name="f" value="{{ value }}" form=""> {{ label }}</label>
+      {% endfor %}
+    </fieldset>
+  {% endfor %}
+  <button type="button" id="clear-filters">Clear filters</button>
+</details>
+
+
 <h3>Search by geolocation</h3>
 <form id="geo-form">
   <label>Latitude <input name="lat" type="number" step="any" required></label>

@@ -129,3 +129,11 @@ th { background: #f6f7f9; font-size: .8rem; text-transform: uppercase; letter-sp
   .sidebar a { border-left: 0; border-bottom: 3px solid transparent; white-space: nowrap; }
   .sidebar a.active { border-bottom-color: #e31837; }
 }
+
+.filters { background: #fff; border-radius: 8px; padding: .75rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 1rem; }
+.filters summary { cursor: pointer; font-weight: 600; }
+.filters fieldset { border: 0; padding: 0; margin: .75rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; }
+.filters legend { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #777; padding: 0; margin-bottom: .35rem; }
+label.check { flex-direction: row; align-items: center; gap: .4rem; font-size: .9rem; }
+.filters button { margin-top: .75rem; }
+

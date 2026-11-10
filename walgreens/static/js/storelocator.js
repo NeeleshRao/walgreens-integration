@@ -32,6 +32,11 @@ addressForm.addEventListener("submit", (e) => {
 
 async function runSearch(url, formData) {
   const params = new URLSearchParams(formData);
+  
+  for (const box of document.querySelectorAll('#filters input[name="f"]:checked')) {
+    params.append("f", box.value);
+  }
+
   statusEl.textContent = "Searching...";
   resultsEl.replaceChildren();
 
@@ -43,6 +48,8 @@ async function runSearch(url, formData) {
       return;
     }
     renderResults(body.data.results || []);
+    if (body.notice) statusEl.textContent = `${statusEl.textContent}. ${body.notice}`;
+
   } catch (err) {
     statusEl.textContent = `Request failed: ${err.message}`;
   }
@@ -75,6 +82,20 @@ function renderResults(results) {
     resultsEl.append(card);
   }
 }
+
+const filtersEl = document.getElementById("filters");
+const countEl = document.getElementById("filter-count");
+
+function updateFilterCount() {
+  const n = filtersEl.querySelectorAll('input[name="f"]:checked').length;
+  countEl.textContent = n ? `(${n} selected)` : "";
+}
+filtersEl.addEventListener("change", updateFilterCount);
+document.getElementById("clear-filters").addEventListener("click", () => {
+  filtersEl.querySelectorAll('input[name="f"]').forEach((b) => (b.checked = false));
+  updateFilterCount();
+});
+
 
 
 // function showInspector(body) {

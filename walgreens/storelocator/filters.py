@@ -1,0 +1,47 @@
+# value -> label, grouped for display. Source: Walgreens Store Locator API docs.
+FILTER_GROUPS = [
+    ("Store features", {
+        "t4hr": "Open 24 hours",
+        "t4hr_rx": "Pharmacy open 24 hours",
+        "dt": "Drive-thru pharmacy",
+        "tc": "Healthcare clinic",
+        "phi": "Photo lab",
+        "cbw": "Beer and wine",
+        "cdr": "Duane Reade",
+        "evc": "Electric vehicle charging",
+        "rb": "Redbox DVD rentals",
+        "cpge": "Blue Rhino propane exchange",
+    }),
+    ("Vaccines", {
+        "fs": "Flu shots",
+        "fsim": "Flu (Influenza)",
+        "icp": "Chickenpox (Varicella)",
+        "iha": "Hepatitis A",
+        "ihb": "Hepatitis B",
+        "ihc": "Hepatitis A/B combination",
+        "ihpv": "HPV",
+        "ije": "Japanese Encephalitis",
+        "imn": "Meningitis (Meningococcal)",
+        "immr": "MMR",
+        "ipn": "Pneumonia (Pneumococcal)",
+        "ipol": "Polio",
+        "irb": "Rabies",
+        "sv": "Shingles",
+        "iwc": "Tdap",
+        "itd": "Td",
+        "ity": "Typhoid",
+        "iyf": "Yellow fever",
+    }),
+    ("Health services", {
+        "hhs": "Hepatitis support",
+        "hiv": "HIV/AIDS support",
+        "chhc": "Home health care",
+        "his": "Infertility support",
+        "mc": "Medication compounding",
+        "hos": "Optical services",
+        "hts": "Transplant support",
+        "thsv_ind": "Travel health consultations",
+    }),
+]
+
+ALLOWED_FILTERS = {value for _, group in FILTER_GROUPS for value in group}
