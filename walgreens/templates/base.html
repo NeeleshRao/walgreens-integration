@@ -21,8 +21,10 @@
     <nav>
       <a href="{% url 'storelocator:index' %}"
    class="{% if request.resolver_match.namespaces|last == 'storelocator' %}active{% endif %}">Store Locator</a>
-<a href="{% url 'storelocator:inventory:index' %}"
-   class="{% if request.resolver_match.namespaces|last == 'inventory' %}active{% endif %}">Store Inventory</a>
+      <a href="{% url 'storelocator:inventory:index' %}"
+        class="{% if request.resolver_match.namespaces|last == 'inventory' %}active{% endif %}">Store Inventory</a>
+      <a href="{% url 'storelocator:details:index' %}"
+        class="{% if request.resolver_match.namespaces|last == 'details' %}active{% endif %}">Store Details</a>
 
     </nav>
   </aside>

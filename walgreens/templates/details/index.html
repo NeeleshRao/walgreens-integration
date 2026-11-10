@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h3>Store details</h3>
+<form id="details-form">
+  <label>Store number <input name="store" type="text" inputmode="numeric" pattern="\d{1,6}" maxlength="6" placeholder="15196" required></label>
+  <button type="submit">Get details</button>
+</form>
+
+<p id="status"></p>
+<section id="details" hidden></section>
+{% endblock %}
+
+{% block scripts %}
+<script>window.DETAILS_URL = "{% url 'storelocator:details:lookup' %}";</script>
+<script src="{% static 'js/details.js' %}"></script>
+{% endblock %}
