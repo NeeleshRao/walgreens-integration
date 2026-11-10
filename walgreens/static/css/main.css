@@ -137,3 +137,24 @@ th { background: #f6f7f9; font-size: .8rem; text-transform: uppercase; letter-sp
 label.check { flex-direction: row; align-items: center; gap: .4rem; font-size: .9rem; }
 .filters button { margin-top: .75rem; }
 
+
+/* Scheduling */
+
+.sidebar nav + h2 { margin-top: 1.5rem; }
+
+textarea { font: inherit; padding: .6rem .75rem; border: 1px solid #cfd3d8; border-radius: 6px; width: 100%; box-sizing: border-box; min-height: 5rem; }
+textarea:focus { outline: 2px solid #e31837; outline-offset: -1px; border-color: transparent; }
+select { font: inherit; padding: .6rem .75rem; border: 1px solid #cfd3d8; border-radius: 6px; background: #fff; }
+form label.wide { flex: 1 1 100%; }
+
+form .selection { flex: 1 1 100%; margin: 0; }
+
+pre.debug { max-height: 22rem; font-size: .8rem; margin-top: .75rem; }
+.card .muted { color: #777; font-size: .85rem; }
+.slots { display: flex; flex-wrap: wrap; gap: .4rem; margin: .35rem 0 .75rem; }
+.slots button { padding: .35rem .7rem; font-size: .85rem; }
+.vaccine-list { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); margin-bottom: 1rem; }
+.warn { color: #9a5b00; }
+.restrict { color: #b00020; }
+.consent { background: #fff; padding: .75rem 1rem; border-radius: 8px; font-size: .85rem; color: #444; flex: 1 1 100%; }
+

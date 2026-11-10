@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h3>Find appointment timeslots</h3>
+
+<details class="filters" open>
+  <summary>Vaccines (max 4)</summary>
+  <fieldset>
+    {% for code, name in vaccines.items %}
+      <label class="check"><input type="checkbox" name="vaccine" value="{{ code }}" form=""> {{ name }} ({{ code }})</label>
+    {% endfor %}
+  </fieldset>
+</details>
+
+<form id="timeslots-form">
+  <label>State <input name="state" type="text" maxlength="2" placeholder="IL" required></label>
+  <label>ZIP <input name="zipCode" type="text" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="60601" required></label>
+  <label>Date of birth <input name="dob" type="date" required></label>
+  <label>From <input name="startDateTime" type="date" required></label>
+  <label>To (optional) <input name="endDateTime" type="date"></label>
+  <label>Latitude <input name="latitude" type="number" step="any" required></label>
+  <label>Longitude <input name="longitude" type="number" step="any" required></label>
+  <button type="button" id="use-location">Use my location</button>
+  <button type="submit">Search</button>
+</form>
+
+<p id="status"></p>
+<section id="slot-results" class="vaccine-list"></section>
+<pre id="debug" class="debug" hidden></pre>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.TIMESLOTS_API_URL = "{% url 'scheduling:timeslots:search' %}";
+  window.BOOKING_URL = "{% url 'scheduling:booking:index' %}";
+</script>
+<script src="{% static 'js/scheduling-common.js' %}"></script>
+<script src="{% static 'js/timeslots.js' %}"></script>
+{% endblock %}

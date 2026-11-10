@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import RedirectView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('storelocator/', include('storelocator.urls'))
+    path('storelocator/', include('storelocator.urls')),
+    # path('', include(('storelocator.urls', 'storelocator'), namespace='home')),
+    path('', RedirectView.as_view(pattern_name='storelocator:index', permanent=False)),
+    path('scheduling/', include('scheduling.urls')),
+
+
 ]

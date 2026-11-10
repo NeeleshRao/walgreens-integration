@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storelocator'
+    'storelocator',
+    'scheduling',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,10 @@ WALGREENS_AFF_ID = os.environ["WALGREENS_AFF_ID"]
 WALGREENS_BASE_URL = os.environ.get("WALGREENS_BASE_URL", "https://services-qa.walgreens.com")
 WALGREENS_INVENTORY_API_KEY = os.environ["WALGREENS_INVENTORY_API_KEY"]
 WALGREENS_INVENTORY_AFF_ID = os.environ["WALGREENS_INVENTORY_AFF_ID"]
+WALGREENS_SCHEDULING_API_KEY = os.environ.get("WALGREENS_SCHEDULING_API_KEY", WALGREENS_API_KEY)
+WALGREENS_SCHEDULING_AFF_ID = os.environ.get("WALGREENS_SCHEDULING_AFF_ID", WALGREENS_AFF_ID)
+WALGREENS_SCHEDULING_CLIENT = os.environ.get("WALGREENS_SCHEDULING_CLIENT", "")
+
 
 
 

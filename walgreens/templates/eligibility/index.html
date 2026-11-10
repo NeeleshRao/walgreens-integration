@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h3>Vaccine eligibility</h3>
+<form id="eligibility-form">
+  <label>State <input name="state" type="text" maxlength="2" placeholder="IL" required></label>
+  <label>Date of birth <input name="dob" type="date" required></label>
+  <button type="submit">Check eligibility</button>
+</form>
+
+<p id="status"></p>
+
+<section id="eligibility-results" hidden>
+  <h3>Eligible</h3>
+  <div id="eligible" class="vaccine-list"></div>
+  <h3>Not eligible</h3>
+  <div id="ineligible" class="vaccine-list"></div>
+  <p><button type="button" id="to-timeslots">Find timeslots for selected vaccines →</button></p>
+</section>
+
+<pre id="debug" class="debug" hidden></pre>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.ELIGIBILITY_URL = "{% url 'scheduling:eligibility:check' %}";
+  window.TIMESLOTS_URL = "{% url 'scheduling:timeslots:index' %}";
+</script>
+<script src="{% static 'js/scheduling-common.js' %}"></script>
+<script src="{% static 'js/eligibility.js' %}"></script>
+{% endblock %}

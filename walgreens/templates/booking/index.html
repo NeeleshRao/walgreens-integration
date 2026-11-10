@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3>1. Hold appointment</h3>
+<form id="hold-form" data-step="hold" data-endpoint="{% url 'scheduling:booking:hold' %}">
+  <div id="selection" class="selection card" hidden></div>
+  <p id="no-selection" class="selection" hidden>
+    No slot selected yet. <a href="{% url 'scheduling:timeslots:index' %}">Pick a timeslot first →</a>
+  </p>
+
+  <label>Channel
+    <select name="channel">{% for c in channels %}<option>{{ c }}</option>{% endfor %}</select>
+  </label>
+
+  <label id="offset-field" hidden>Store UTC offset (couldn't be detected)
+    <select name="offset">
+      <option value="">— choose —</option>
+      <option value="-04:00">-04:00 (Eastern daylight)</option>
+      <option value="-05:00">-05:00 (Eastern std / Central daylight)</option>
+      <option value="-06:00">-06:00 (Central std / Mountain daylight)</option>
+      <option value="-07:00">-07:00 (Mountain std / Pacific daylight)</option>
+      <option value="-08:00">-08:00 (Pacific std)</option>
+      <option value="-09:00">-09:00 (Alaska std)</option>
+      <option value="-10:00">-10:00 (Hawaii)</option>
+    </select>
+  </label>
+
+  <div id="questionnaire" class="selection"></div>
+  <button type="submit" id="hold-submit">Hold slot</button>
+</form>
+<pre class="debug" hidden></pre>
+
+<h3>2. Attach patient</h3>
+<form id="patient-form" data-step="patient" data-endpoint="{% url 'scheduling:booking:patient' %}">
+  <label>Engagement ID <input name="engagementId" required></label>
+  <label>First name <input name="firstName" required></label>
+  <label>Middle name <input name="middleName"></label>
+  <label>Last name <input name="lastName" required></label>
+  <label>Date of birth <input name="dob" type="date" required></label>
+  <label>Gender
+    <select name="gender">{% for g in genders %}<option>{{ g }}</option>{% endfor %}</select>
+  </label>
+  <label>Mobile phone <input name="phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="312-555-0100" required></label>
+  <label>Email <input name="email" type="email" required></label>
+  <div class="consent">
+    <label class="check"><input type="checkbox" name="smsConsent"> {{ sms_consent }}</label>
+  </div>
+  <button type="submit">Attach patient</button>
+</form>
+<pre class="debug" hidden></pre>
+
+
+
+<h3>3. Confirm appointment</h3>
+<form id="confirm-form" data-step="confirm" data-endpoint="{% url 'scheduling:booking:confirm' %}">
+  <label>Engagement ID <input name="engagementId" required></label>
+  <button type="submit">Confirm</button>
+</form>
+<pre class="debug" hidden></pre>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/scheduling-common.js' %}"></script>
+<script src="{% static 'js/booking.js' %}"></script>
+{% endblock %}
