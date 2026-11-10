@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = "storelocator"
@@ -8,4 +8,6 @@ urlpatterns = [
     path("api/search/geo/", views.search_geo, name="search_geo"),
     path("api/search/address/", views.search_address, name="search_address"),
     path("api/search/zip/", views.search_zip, name="search_zip"),
+    path("inventory/", include(("storelocator.inventory.urls", "inventory")))
+
 ]

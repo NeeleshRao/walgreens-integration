@@ -11,12 +11,15 @@ class WalgreensAPIError(Exception):
         self.payload = payload
 
 
-def post(path, body, timeout=10):
+def post(path, body, timeout=10, api_key=None, aff_id=None):
     """POST to Walgreens with credentials injected. Returns data plus debug info for the UI inspector."""
     url = f"{settings.WALGREENS_BASE_URL}{path}"
+    api_key = api_key or settings.WALGREENS_API_KEY
+    aff_id = aff_id or settings.WALGREENS_AFF_ID
+
     full_body = {
-        "apiKey": settings.WALGREENS_API_KEY,
-        "affId": settings.WALGREENS_AFF_ID,
+        "apiKey": api_key,
+        "affId": aff_id,
         **body,
     }
     started = time.monotonic()

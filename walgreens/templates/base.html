@@ -8,14 +8,26 @@
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
-  <header>
+  {% comment %} <header>
     <h1>Walgreens Integration Tracker</h1>
     <span class="badge">Sandbox</span>
     <nav>
       <a href="{% url 'storelocator:index' %}">Store Locator</a>
     </nav>
-  </header>
+  </header> {% endcomment %}
+  <div class="layout">
+  <aside class="sidebar">
+    <h2>APIs</h2>
+    <nav>
+      <a href="{% url 'storelocator:index' %}"
+   class="{% if request.resolver_match.namespaces|last == 'storelocator' %}active{% endif %}">Store Locator</a>
+<a href="{% url 'storelocator:inventory:index' %}"
+   class="{% if request.resolver_match.namespaces|last == 'inventory' %}active{% endif %}">Store Inventory</a>
+
+    </nav>
+  </aside>
   <main>{% block content %}{% endblock %}</main>
+</div>
   {% block scripts %}{% endblock %}
 </body>
 </html>

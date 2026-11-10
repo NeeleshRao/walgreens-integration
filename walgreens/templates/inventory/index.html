@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h3>Store inventory</h3>
+<form id="inventory-form">
+  <label>Store number <input name="store" type="text" inputmode="numeric" pattern="\d{1,6}" maxlength="6" placeholder="15196" required></label>
+  <button type="submit">Look up</button>
+</form>
+
+<p id="status"></p>
+
+<label>Filter by article ID
+  <input id="filter" type="text" placeholder="e.g. 1234">
+</label>
+
+<table id="inventory-table" hidden>
+  <thead>
+    <tr><th>Article ID</th><th>Quantity</th><th>Updated</th></tr>
+  </thead>
+  <tbody id="inventory-body"></tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script>window.INVENTORY_URL = "{% url 'storelocator:inventory:lookup' %}";</script>
+<script src="{% static 'js/inventory.js' %}"></script>
+{% endblock %}

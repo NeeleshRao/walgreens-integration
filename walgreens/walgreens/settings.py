@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storelocator',
+    'storelocator'
 ]
 
 MIDDLEWARE = [
@@ -131,9 +131,15 @@ MAILERS = {
     },
 }
 
+WALGREENS_APP_VER = os.environ.get("WALGREENS_APP_VER", "1")
+
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 WALGREENS_API_KEY = os.environ["WALGREENS_API_KEY"]
 WALGREENS_AFF_ID = os.environ["WALGREENS_AFF_ID"]
 WALGREENS_BASE_URL = os.environ.get("WALGREENS_BASE_URL", "https://services-qa.walgreens.com")
+WALGREENS_INVENTORY_API_KEY = os.environ["WALGREENS_INVENTORY_API_KEY"]
+WALGREENS_INVENTORY_AFF_ID = os.environ["WALGREENS_INVENTORY_AFF_ID"]
+
+
 
